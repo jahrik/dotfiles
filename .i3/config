@@ -155,17 +155,20 @@ bar {
 }
 
 # Start up
+exec redshift -l 42 N:114 W
+exec conky
 exec pulseaudio --start
 exec amixer sset Master 20%
-exec --no-startup-id i3-msg 'workspace 1; exec xterm'
-exec --no-startup-id i3-msg 'workspace 2; exec chromium'
-exec --no-startup-id i3-msg 'workspace 2; exec davstart'
-exec --no-startup-id i3-msg 'workspace 2; exec thunderbird'
+# exec --no-startup-id i3-msg 'workspace 1; exec xterm'
+# exec --no-startup-id i3-msg 'workspace 2; exec chromium'
+# exec --no-startup-id i3-msg 'workspace 2; exec davstart'
+# exec --no-startup-id i3-msg 'workspace 2; exec thunderbird'
 
 # Touchpad off
 exec synclient Tourchpad=1
 
 # Brightness
+exec "xcalib -co 80 -a"
 bindsym $mod_win+Up exec "xcalib -c"
 bindsym $mod_win+Down exec "xcalib -co 90 -a"
 
