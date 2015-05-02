@@ -165,7 +165,7 @@ exec amixer sset Master 20%
 # exec --no-startup-id i3-msg 'workspace 2; exec thunderbird'
 
 # Touchpad off
-exec synclient Tourchpad=1
+exec synclient TouchpadOff=1
 
 # Brightness
 exec "xcalib -co 80 -a"
