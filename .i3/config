@@ -160,28 +160,29 @@ exec redshift -l 42 N:114 W
 exec conky
 exec pulseaudio --start
 exec amixer sset Master 20%
-#disable caps lock switch
-exec xmodmap -e "clear lock"
-#set caps_lock as escape
-exec xmodmap -e "keysym Caps_Lock = Escape"
 # exec --no-startup-id i3-msg 'workspace 1; exec xterm'
 # exec --no-startup-id i3-msg 'workspace 2; exec chromium'
 # exec --no-startup-id i3-msg 'workspace 2; exec davstart'
 # exec --no-startup-id i3-msg 'workspace 2; exec thunderbird'
+
+# Disable caps lock switch
+exec xmodmap -e "clear lock"
+# Set caps_lock as escape
+exec xmodmap -e "keysym Caps_Lock = Escape"
 
 # Touchpad off
 exec synclient TouchpadOff=1
 
 # Brightness
 exec "xcalib -co 80 -a"
-bindsym $mod_win+Up exec "xcalib -c"
-bindsym $mod_win+Down exec "xcalib -co 90 -a"
+bindsym XF86MonBrightnessUp exec "xcalib -c"
+bindsym XF86MonBrightnessDown exec "xcalib -co 90 -a"
 
 # Lock screen
 bindsym $mod_win+l exec "i3lock"
 
 # Screen Shot
-bindsym XF86Launch1 exec scrot '%Y-%m-%d_%T_scrot.png' -e 'mv $f ~/Pictures/screenshots/'
+bindsym Print exec scrot '%Y-%m-%d_%T_scrot.png' -e 'mv $f ~/Pictures/screenshots/'
 
 # Multiple monitors
 # if plugged in already try
