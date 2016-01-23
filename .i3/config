@@ -13,6 +13,9 @@ set $mod Mod1
 set $mod_win Mod4
 set $ctl control
 
+set $gray1 #373d48
+set $gray2 #29303a
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -151,14 +154,19 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        position bottom
+        status_command ~/.i3/bin/conky-wrapper
+        colors {
+                statusline #AAAAAA
+                background $gray2
+                focused_workspace $gray2 $gray2 #FFFFFF
+                inactive_workspace $gray1 $gray1 #AAAAAA
+        }
 }
 
 # Start up
 exec debuglog off
-exec redshift -l 42 N:114 W
 exec conky
-exec pulseaudio --start
 exec amixer sset Master 20%
 # exec --no-startup-id i3-msg 'workspace 1; exec xterm'
 # exec --no-startup-id i3-msg 'workspace 2; exec chromium'
@@ -182,23 +190,23 @@ bindsym XF86MonBrightnessDown exec "xcalib -co 90 -a"
 bindsym $mod_win+l exec "i3lock"
 
 # Screen Shot
-bindsym Print exec scrot '%Y-%m-%d_%T_scrot.png' -e 'mv $f ~/Pictures/screenshots/'
+bindsym Print exec scrot '%Y-%m-%d_%T_scrot.png' -e 'mv $f ~/screenshots/'
 
 # Multiple monitors
 # if plugged in already try
-exec "xrandr --output HDMI1 --auto --right-of LVDS1"
+exec "xrandr --output HDMI1 --auto --above LVDS1"
 # or push the button
-bindsym $mod_win+2 exec "xrandr --output HDMI1 --auto --right-of LVDS1"
+bindsym $mod_win+2 exec "xrandr --output HDMI1 --auto --above LVDS1"
 # if plugged in already try
-exec "xrandr --output DP1 --auto --right-of LVDS1"
+# exec "xrandr --output DP1 --auto --right-of LVDS-0"
 # or push the button
-bindsym $mod_win+3 exec "xrandr --output DP1 --auto --right-of LVDS1"
+# bindsym $mod_win+3 exec "xrandr --output DP1 --auto --right-of LVDS-0"
 
 # Sound keys
 # up
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 # down
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer set Master 5%- 
 # mute
-bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
-# bindsym XF86AudioMicMute
+bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioMicMute exec "amixer -D pulse sset Capture toggle"

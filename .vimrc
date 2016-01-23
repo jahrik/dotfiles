@@ -33,6 +33,7 @@ Bundle "Gundo"
 Bundle "https://github.com/davidhalter/jedi-vim.git"
 Bundle "https://github.com/nvie/vim-flake8.git"
 Bundle "https://github.com/powerline/powerline.git"
+Bundle "https://github.com/ngmy/vim-rubocop.git"
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -82,9 +83,11 @@ map <F2> :NERDTreeToggle<CR>
 
 let g:pyflakes_use_quickfix = 0
 
-set tabstop=4
-set shiftwidth=4
 set expandtab
+set tabstop=2
+set shiftwidth=2
 set spell
 set spelllang=en
 set spellfile=$HOME/vim/en.utf-8.add
+set number
+command Fuckyou w !sudo tee %
