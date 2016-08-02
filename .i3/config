@@ -198,9 +198,9 @@ exec "xrandr --output HDMI1 --auto --above LVDS1"
 # or push the button
 bindsym $mod_win+2 exec "xrandr --output HDMI1 --auto --above LVDS1"
 # if plugged in already try
-# exec "xrandr --output DP1 --auto --right-of LVDS-0"
+exec "xrandr --output DP1 --auto --right-of LVDS-0"
 # or push the button
-# bindsym $mod_win+3 exec "xrandr --output DP1 --auto --right-of LVDS-0"
+bindsym $mod_win+3 exec "xrandr --output DP1 --auto --right-of LVDS-0"
 
 # Sound keys
 # up

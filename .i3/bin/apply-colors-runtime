@@ -24,5 +24,3 @@ file = ARGF.read
 file.scan(LINE_FORMAT).each do |name, hex|
   apply_color(name, hex)
 end
-
-
